@@ -25,14 +25,14 @@ namespace pref {
     std::string configFile = "C:/";
 }
 
-//holds all 
-class Task {
+//holds all instances of tasks
+class TaskInstance {
     private:
         std::string desc;
         bool done;
         int id;
     public:
-        Task(int id, std::string desc) {
+        TaskInstance(int id, std::string desc) {
             this->done = false;
             this->id = id;
             this->desc = desc;
@@ -74,7 +74,7 @@ void markDoneUndone();
 void deleteItem();
 
 int nextId = 0;
-std::vector<Task> tasklist;
+std::vector<TaskInstance> tasklist;
 
 int main(){
     configWrite();
@@ -248,7 +248,7 @@ bool isIndexValid() {
 void newElement() {
     std::cout << "Insert task description \n";
     std::getline(std::cin >> std::ws, tmp::desc);
-    tasklist.push_back(Task(nextId, tmp::desc));
+    tasklist.push_back(TaskInstance(nextId, tmp::desc));
     nextId++;
 }
 
